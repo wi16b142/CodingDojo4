@@ -5,9 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodingDojo4"
         mc:Ignorable="d"
-        Title="CodingDojo 4 by Sascha Böck" Height="350" Width="525">
+        Title="CodingDojo 4 by Sascha Böck" Height="350" Width="600">
     <Grid>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="177,274,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
+        <Label Content="Firstname" Height="25" HorizontalAlignment="Left" Margin="30,20,0,0" VerticalAlignment="Top"/>
+        <TextBox Width="100" Height="25" Margin="0,20,30,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Label Content="Lastname" Height="25" HorizontalAlignment="Left" Margin="30,60,0,0" VerticalAlignment="Top"/>
+        <TextBox Width="100" Height="25" Margin="0,60,30,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Label Content="SocialSecurityNumber" Height="25" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top"/>
+        <TextBox Width="100" Height="25" Margin="0,100,30,0" VerticalAlignment="Top" HorizontalAlignment="Right" Text="0"/>
+        <Label Content="Birthdate" Height="25" HorizontalAlignment="Left" Margin="30,140,0,0" VerticalAlignment="Top"/>
+        <DatePicker Width="100" Height="25" Margin="0,140,30,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+
+        <Grid Grid.Column="1">
+            <DataGrid Height="239" Width="276" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="SSN" Width="1*"/>
+                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Lastname" Width="1*"/>
+                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Firstname" Width="1*"/>
+                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Birthdate" Width="1*"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Button Content="Add" HorizontalAlignment="Left" Margin="191,20,0,20" VerticalAlignment="Center" Width="75"/>
+            <Button Content="Load Data" HorizontalAlignment="Right" Margin="0,0,110,0" VerticalAlignment="Center" Width="75"/>
+            <Button Content="Save Data" HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center" Width="75"/>
+        </Grid>
     </Grid>
 </Window>
