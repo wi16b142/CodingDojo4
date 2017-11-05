@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using CodingDojo4.Model;
 using System;
 using GalaSoft.MvvmLight.CommandWpf;
+using System.IO;
 
 namespace CodingDojo4.ViewModel
 {
+    
+
     public class MainViewModel : ViewModelBase
     {
         private ObservableCollection<PersonViewModel> entry = new ObservableCollection<PersonViewModel>();
-        
+        private const string writePath = @"../../../CD4WriteData.csv";
+        private const string readPath = @"../../../CD4ReadData.csv";
+
         private string lastname = "";
         private string firstname = "";
         private DateTime birthdate = DateTime.Today;
@@ -22,6 +27,8 @@ namespace CodingDojo4.ViewModel
 
         public MainViewModel()
         {
+            FileHandler readFile = new FileHandler();
+
             BtnAddClick = new RelayCommand(AddPerson, ()=> { if (Lastname.Length > 2) { return true; } else { return false; } });
             BtnLoadClick = new RelayCommand(LoadData, CanExecuteLoadData);
             BtnSaveClick = new RelayCommand(SaveData, ()=> { if (Entry.Count > 0) { return true; } else { return false; } });
@@ -96,20 +103,34 @@ namespace CodingDojo4.ViewModel
 
         private bool CanExecuteLoadData()
         {
-            //check if file exists
-            return false;
+            if (!File.Exists(readPath))
+            {
+                return false;
+            }
+            else return true;
+                
         }
 
         private void LoadData()
         {
-            //load Data from csv
-            //for each row, fetchData
+            String[] rawInput = File.ReadAllLines(readPath);
+            Entry.Clear();
+            foreach (var item in rawInput)
+            {
+                var fields = item.Split(';');
+                Entry.Add(new PersonViewModel(Convert.ToInt32(fields[0]), fields[1], fields[2], Convert.ToDateTime(fields[3])));
+            }
         }
 
         public void SaveData()
         {
-            //save Data as csv
-            Firstname = "Sascha";
+            using (StreamWriter sw = File.CreateText(writePath))
+            {
+                foreach (PersonViewModel row in Entry)
+                {
+                    sw.WriteLine("{0};{1};{2};{3}", row.SocialSecurityNumber, row.Lastname, row.Firstname, row.Birthdate);
+                }
+            }
         }
 
     }
