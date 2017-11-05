@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodingDojo4"
+        xmlns:vm="clr-namespace:CodingDojo4.ViewModel"
         mc:Ignorable="d"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="CodingDojo 4 by Sascha Böck" Height="350" Width="600">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -13,34 +16,35 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
+            
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <Label Content="Firstname" Height="25" HorizontalAlignment="Left" Margin="30,20,0,0" VerticalAlignment="Top"/>
-        <TextBox Width="100" Height="25" Margin="0,20,30,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <TextBox Width="100" Height="25" Margin="0,20,30,0" VerticalAlignment="Top" HorizontalAlignment="Right" Text="{Binding Firstname}"/>
         <Label Content="Lastname" Height="25" HorizontalAlignment="Left" Margin="30,60,0,0" VerticalAlignment="Top"/>
-        <TextBox Width="100" Height="25" Margin="0,60,30,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <TextBox Width="100" Height="25" Margin="0,60,30,0" VerticalAlignment="Top" HorizontalAlignment="Right" Text="{Binding Lastname}" />
         <Label Content="SocialSecurityNumber" Height="25" HorizontalAlignment="Left" Margin="30,100,0,0" VerticalAlignment="Top"/>
-        <TextBox Width="100" Height="25" Margin="0,100,30,0" VerticalAlignment="Top" HorizontalAlignment="Right" Text="0"/>
+        <TextBox Width="100" Height="25" Margin="0,100,30,0" VerticalAlignment="Top" HorizontalAlignment="Right" Text="{Binding SocialSecurityNumber}"/>
         <Label Content="Birthdate" Height="25" HorizontalAlignment="Left" Margin="30,140,0,0" VerticalAlignment="Top"/>
-        <DatePicker Width="100" Height="25" Margin="0,140,30,0" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <DatePicker Width="100" Height="25" Margin="0,140,30,0" VerticalAlignment="Top" HorizontalAlignment="Right" SelectedDate="{Binding Birthdate}" FirstDayOfWeek="Monday" Text="{Binding Birthdate}"/>
 
         <Grid Grid.Column="1">
-            <DataGrid Height="239" Width="276" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False">
+            <DataGrid Height="241" Width="276" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding Entry}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="SSN" Width="1*"/>
-                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Lastname" Width="1*"/>
-                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Firstname" Width="1*"/>
-                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Birthdate" Width="1*"/>
+                    <DataGridTextColumn Binding="{Binding SocialSecurityNumber}" Header="SSN" Width="1*"/>
+                    <DataGridTextColumn Binding="{Binding Lastname}" Header="Lastname" Width="1*"/>
+                    <DataGridTextColumn Binding="{Binding Firstname}" Header="Firstname" Width="1*"/>
+                    <DataGridTextColumn Binding="{Binding Birthdate}" Header="Birthdate" Width="1*"/>
                 </DataGrid.Columns>
 
             </DataGrid>
         </Grid>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Button Content="Add" HorizontalAlignment="Left" Margin="191,20,0,20" VerticalAlignment="Center" Width="75"/>
-            <Button Content="Load Data" HorizontalAlignment="Right" Margin="0,0,110,0" VerticalAlignment="Center" Width="75"/>
-            <Button Content="Save Data" HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center" Width="75"/>
+            <Button Command="{Binding BtnAddClick}" Content="Add" HorizontalAlignment="Left" Margin="191,20,0,20" VerticalAlignment="Center" Width="75"/>
+            <Button Command="{Binding BtnLoadClick}" Content="Load Data" HorizontalAlignment="Right" Margin="0,0,115,0" VerticalAlignment="Center" Width="75"/>
+            <Button Command="{Binding BtnSaveClick}" Content="Save Data" HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center" Width="75"/>
         </Grid>
     </Grid>
 </Window>
