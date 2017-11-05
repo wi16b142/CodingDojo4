@@ -16,7 +16,7 @@ namespace CodingDojo4.ViewModel
             this.person = new Person(socialSecurityNumber, lastName, firstName, birthdate);
         }
         
-        public string FirstName
+        public string Firstname
         {
             get => person.firstName;
             set
@@ -26,7 +26,7 @@ namespace CodingDojo4.ViewModel
             }
         }
 
-        public string LastName
+        public string Lastname
         {
             get => person.lastName;
             set

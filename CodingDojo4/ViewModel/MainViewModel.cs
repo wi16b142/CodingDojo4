@@ -1,8 +1,9 @@
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using CodingDojo4.Model;
 using System;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace CodingDojo4.ViewModel
 {
@@ -21,43 +22,43 @@ namespace CodingDojo4.ViewModel
 
         public MainViewModel()
         {
-            BtnAddClick = new RelayCommand(AddPerson, ()=> { if (lastname.Length > 2) { return true; } else { return false; } });
+            BtnAddClick = new RelayCommand(AddPerson, ()=> { if (Lastname.Length > 2) { return true; } else { return false; } });
             BtnLoadClick = new RelayCommand(LoadData, CanExecuteLoadData);
             BtnSaveClick = new RelayCommand(SaveData, ()=> { if (Entry.Count > 0) { return true; } else { return false; } });
             FetchData = new RelayCommand(AddPerson);
 
             Entry.Add(new PersonViewModel(1234, "Böck", "Sascha", new DateTime(1990,04,29)));
             Entry.Add(new PersonViewModel(5678, "Maier", "Hermann", new DateTime(1997, 12, 12)));
-            Entry.Add(new PersonViewModel(0897, "Stark", "Ned", new DateTime(1980, 02, 01)));
+            Entry.Add(new PersonViewModel(1897, "Stark", "Ned", new DateTime(1980, 02, 01)));
         }
 
         public ObservableCollection<PersonViewModel> Entry
         {
             get { return entry; }
-            set { entry = value; RaisePropertyChanged(); }
+            set { entry = value; }
         }
 
         public RelayCommand BtnAddClick
         {
             get { return btnAddClick; }
-            set { btnAddClick = value; RaisePropertyChanged(); }
+            set { btnAddClick = value; }
         }
         public RelayCommand BtnLoadClick
         {
             get { return btnLoadClick; }
-            set { btnLoadClick = value; RaisePropertyChanged(); }
+            set { btnLoadClick = value; }
         }
 
         public RelayCommand BtnSaveClick
         {
             get { return btnSaveClick; }
-            set { btnSaveClick = value; RaisePropertyChanged(); }
+            set { btnSaveClick = value; }
         }
 
         public RelayCommand FetchData
         {
             get { return fetchData; }
-            set { fetchData = value; RaisePropertyChanged(); }
+            set { fetchData = value; }
         }
 
         public int SocialSecurityNumber
@@ -86,7 +87,11 @@ namespace CodingDojo4.ViewModel
 
         private void AddPerson()
         {
-            Entry.Add(new PersonViewModel(socialSecurityNumber, lastname, firstname, birthdate));
+            Entry.Add(new PersonViewModel(SocialSecurityNumber, Lastname, Firstname, Birthdate));
+            Firstname = "";
+            Lastname = "";
+            SocialSecurityNumber = 0;
+            Birthdate = DateTime.Today;    
         }
 
         private bool CanExecuteLoadData()
