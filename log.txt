@@ -1,0 +1,49 @@
+* commit a4608fbb5f7bdc54766f504d1e72db47ef99e497
+| Author: Sascha Böck <wi16b142@technikum-wien.at>
+| Date:   Sun Nov 5 20:15:23 2017 +0100
+| 
+|     added FileIO functionality
+| 
+* commit 0c9ec792b62468c5715a9910eb33b6ba05fc73f4
+| Author: Sascha Böck <wi16b142@technikum-wien.at>
+| Date:   Sun Nov 5 17:12:58 2017 +0100
+| 
+|     debug MainViewModel, Errow was using wrong MVVMlight Command.
+|     
+|     using GalaSoft.MvvmLight.CommandWpf;
+| 
+* commit 9ba577b800f2c3c1ef04a2d6ee33ddbc6333b9fa
+| Author: Sascha Böck <wi16b142@technikum-wien.at>
+| Date:   Sun Nov 5 16:06:41 2017 +0100
+| 
+|     created and edited PersonViewModel, edited MainViewModel
+| 
+* commit b77dc59d8dcfa34d8cfeeef35d2860ad6a99ab22
+| Author: Sascha Böck <wi16b142@technikum-wien.at>
+| Date:   Sat Nov 4 21:32:47 2017 +0100
+| 
+|     XAML created
+| 
+* commit 24a78f263b262a8409f1345c4140060a39f191e5
+| Author: Sascha Böck <wi16b142@technikum-wien.at>
+| Date:   Sat Nov 4 20:39:29 2017 +0100
+| 
+|     create project, initial commit
+| 
+* commit 20dd5a77b39c082f087a4dd002810fa17d6a341c
+| Author: Sascha Böck <wi16b142@technikum-wien.at>
+| Date:   Sat Nov 4 20:38:11 2017 +0100
+| 
+|     create new project, initial commit
+| 
+* commit 65334d40fa82ed5376ac7bb29e22a99f9cc2377d
+| Author: Sascha Böck <wi16b142@technikum-wien.at>
+| Date:   Sat Nov 4 20:37:20 2017 +0100
+| 
+|     Add project files.
+| 
+* commit b03d3bac232e176ef7984cc700d43b867767dc9d
+  Author: Sascha Böck <wi16b142@technikum-wien.at>
+  Date:   Sat Nov 4 20:37:18 2017 +0100
+  
+      Add .gitignore and .gitattributes.
